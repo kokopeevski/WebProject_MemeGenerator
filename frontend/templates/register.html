@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/validate.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Регистрация</h1>
+        <?php if (!empty($errors)): ?>
+            <div class="error">
+                <?php foreach ($errors as $error): ?>
+                    <p><?php echo $error; ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+        <form method="POST" onsubmit="return validateRegisterForm()">
+            <label for="username">Потребителско име:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Имейл:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Парола:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" class="btn">Регистрирай се</button>
+        </form>
+        <p>Вече имате профил? <a href="login.php">Влезте тук</a>.</p>
+    </div>
+</body>
+</html>
