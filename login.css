@@ -1,0 +1,114 @@
+/* Основни настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url('../images/background.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+/* Контейнер */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    color: #000000;
+}
+
+/* Заглавие */
+.container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Съобщения */
+.success, .error {
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.success p {
+    color: #4CAF50;
+}
+
+.error p {
+    color: #FF5252;
+}
+
+/* Формуляр */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+    text-align: left;
+}
+
+input[type="email"],
+input[type="password"] {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #000000;
+    box-shadow: inset 3px 3px 5px rgba(0,0,0,0.2),
+                inset -3px -3px 5px rgba(255,255,255,0.1);
+    transition: background 0.3s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+}
+
+/* Бутон */
+.btn {
+    background: rgba(0, 123, 255, 0.7);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background: rgba(0, 123, 255, 1);
+    transform: translateY(-2px);
+}
+
+/* Линк към регистрация */
+.container p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.container a {
+    color: #00bfff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
