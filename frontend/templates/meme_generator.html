@@ -1,82 +1,151 @@
+<!-- <!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор на мемета</title>
+    <link rel="stylesheet" href="../css/meme_generator.css">
+</head>
+<body>
+    <div class="nav-buttons">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Начало" onclick="goHome()">
+        <img src="https://cdn-icons-png.flaticon.com/512/32/32355.png" alt="Ново" onclick="makeNew()">
+    </div>
+
+    <div class="main-layout">
+        <aside class="templates-sidebar">
+            <h2>Шаблони</h2>
+            <div class="templates-scroll">
+                <div class="template-item" data-template="LeonardoDiCaprio.jpg" onclick="selectTemplate(this)">
+                    <img src="../images/templates/LeonardoDiCaprio.jpg" alt="Leonardo DiCaprio">
+                </div>
+                <div class="template-item" data-template="Trollface.jpg" onclick="selectTemplate(this)">
+                    <img src="../images/templates/Trollface.jpg" alt="Trollface">
+                </div>
+            </div>
+        </aside>
+
+        <main class="container">
+            <h1>Генерирай твоето персонализирано меме</h1>
+
+            <div class="upload-section">
+                <label for="upload">Качване на снимка:</label>
+                <input type="file" id="upload" accept="image/jpeg,image/png">
+            </div>
+
+            <div class="meme-generator">
+                <label for="top_text">Горен текст:</label>
+                <input type="text" id="top_text" placeholder="Въведи горен текст">
+
+                <label for="bottom_text">Долен текст:</label>
+                <input type="text" id="bottom_text" placeholder="Въведи долен текст">
+
+                <div class="preview">
+                    <h3>Преглед:</h3>
+                    <canvas id="memeCanvas"></canvas>
+                </div>
+
+                <button id="downloadButton">Изтегли меме</button>
+            </div>
+
+            <div class="back-link">
+                <a href="../welcome.php">Назад</a>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <small>© Created for meme_project</small>
+    </footer>
+
+    <script src="../js/meme_generator.js"></script>
+    <script src="../js/meme_nav.js"></script>
+</body>
+</html> -->
+
+
 <!DOCTYPE html>
 <html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Генератор на мемета</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f4; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        h1 { text-align: center; }
-        .nav-buttons { text-align: center; margin-bottom: 20px; }
-        .nav-buttons img { cursor: pointer; margin: 0 20px; width: 60px; height: 60px; }
-        .templates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
-        .template-item img { width: 100%; height: auto; cursor: pointer; border: 2px solid #ddd; }
-        .template-item img:hover, .template-item.selected img { border-color: #007bff; }
-        .upload-section { margin: 20px 0; text-align: center; }
-        .upload-section label { font-size: 16px; margin-right: 10px; }
-        .upload-section input { padding: 10px; font-size: 16px; }
-        .meme-generator { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .meme-generator label { font-size: 16px; }
-        .meme-generator input[type="text"] { width: 300px; padding: 10px; font-size: 16px; }
-        .preview { text-align: center; margin: 20px 0; }
-        .preview h3 { margin-bottom: 10px; }
-        .preview canvas { border: 1px solid #000; max-width: 100%; }
-        .meme-generator button { padding: 10px 20px; background: #007bff; color: #fff; border: none; cursor: pointer; font-size: 16px; display: none; }
-        .meme-generator button:hover { background: #0056b3; }
-        .back-link { text-align: center; margin: 20px 0; }
-        .back-link a { color: #007bff; text-decoration: none; font-size: 16px; }
-        .back-link a:hover { text-decoration: underline; }
-        footer { text-align: center; margin-top: 20px; }
-    </style>
+    <link rel="stylesheet" href="../css/meme_generator.css">
 </head>
 <body>
-    <div class="nav-buttons">
-        <img src="../images/home.png" alt="Назад" onclick="goHome()">
-        <img src="../images/new.png" alt="Ново" onclick="makeNew()">
-    </div>
+    <nav class="top-nav">
+        <div class="nav-buttons">
+            <a href="../meme_generator.php">Генерирай меме</a>
+            <a href="../favorites.php">Любими мемета</a>
+            <a href="../gallery.php">Галерия</a>
+            <a href="../logout.php">Изход</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1>Генерирай твоето персонализирано меме</h1>
-        <div class="templates-grid">
-            <div class="template-item" data-template="LeonardoDiCaprio.jpg" onclick="selectTemplate(this)">
-                <img src="../images/templates/LeonardoDiCaprio.jpg" alt="Leonardo DiCaprio">
+        <aside class="sidebar">
+            <h2>Избери шаблон</h2>
+            <div class="templates">
+                <!-- Примерни 30+ темплейта -->
+                <div class="template-item" data-template="LeonardoDiCaprio.jpg">
+                    <img src="https://i.imgur.com/KV7zFOf.jpg" alt="Leonardo DiCaprio">
+                </div>
+                <div class="template-item" data-template="Trollface.jpg">
+                    <img src="https://i.imgur.com/ZnQ9pLV.jpg" alt="Trollface">
+                </div>
+                <div class="template-item" data-template="LeonardoDiCaprio.jpg">
+                    <img src="https://i.imgur.com/KV7zFOf.jpg" alt="Leonardo DiCaprio">
+                </div>
+                <div class="template-item" data-template="Trollface.jpg">
+                    <img src="https://i.imgur.com/ZnQ9pLV.jpg" alt="Trollface">
+                </div>
+                <div class="template-item" data-template="LeonardoDiCaprio.jpg">
+                    <img src="https://i.imgur.com/KV7zFOf.jpg" alt="Leonardo DiCaprio">
+                </div>
+                <div class="template-item" data-template="Trollface.jpg">
+                    <img src="https://i.imgur.com/ZnQ9pLV.jpg" alt="Trollface">
+                </div>
+                <div class="template-item" data-template="LeonardoDiCaprio.jpg">
+                    <img src="https://i.imgur.com/KV7zFOf.jpg" alt="Leonardo DiCaprio">
+                </div>
+                <div class="template-item" data-template="Trollface.jpg">
+                    <img src="https://i.imgur.com/ZnQ9pLV.jpg" alt="Trollface">
+                </div>
+                <div class="template-item" data-template="LeonardoDiCaprio.jpg">
+                    <img src="https://i.imgur.com/KV7zFOf.jpg" alt="Leonardo DiCaprio">
+                </div>
+                <div class="template-item" data-template="Trollface.jpg">
+                    <img src="https://i.imgur.com/ZnQ9pLV.jpg" alt="Trollface">
+                </div>
+                <div class="template-item" data-template="LeonardoDiCaprio.jpg">
+                    <img src="https://i.imgur.com/KV7zFOf.jpg" alt="Leonardo DiCaprio">
+                </div>
+                <div class="template-item" data-template="Trollface.jpg">
+                    <img src="https://i.imgur.com/ZnQ9pLV.jpg" alt="Trollface">
+                </div>
+                <!-- Повтори още 30 шаблона с различни URL-и -->
+                <!-- ... -->
             </div>
-            <div class="template-item" data-template="Trollface.jpg" onclick="selectTemplate(this)">
-                <img src="../images/templates/Trollface.jpg" alt="Trollface">
+        </aside>
+
+        <main class="main-content">
+            <h1>Създай своето меме</h1>
+            <div class="upload-section">
+                <label for="upload">Качи своя снимка:</label>
+                <input type="file" id="upload" accept="image/*">
             </div>
-            <!-- Добави още шаблони тук -->
-        </div>
-        <div class="upload-section">
-            <label for="upload">Качване на снимка:</label>
-            <input type="file" id="upload" accept="image/jpeg,image/png">
-        </div>
-        <div class="meme-generator">
-            <label for="top_text">Горен текст:</label>
-            <input type="text" id="top_text" placeholder="Въведи горен текст">
-            <label for="bottom_text">Долен текст:</label>
-            <input type="text" id="bottom_text" placeholder="Въведи долен текст">
-            <div class="preview">
-                <h3>Преглед:</h3>
+            <div class="meme-form">
+                <label for="top_text">Горен текст:</label>
+                <input type="text" id="top_text" placeholder="Въведи горен текст">
+                <label for="bottom_text">Долен текст:</label>
+                <input type="text" id="bottom_text" placeholder="Въведи долен текст">
                 <canvas id="memeCanvas"></canvas>
+                <button id="downloadButton">Изтегли меме</button>
             </div>
-            <button id="downloadButton">Изтегли меме</button>
-        </div>
-        <div class="back-link">
-            <a href="../welcome.php">Назад</a>
-        </div>
+        </main>
     </div>
-    <footer>
-        <small>© Created for meme_project</small>
-    </footer>
+
     <script src="../js/meme_generator.js"></script>
-    <script>
-        function goHome() {
-            window.location.href = "../welcome.php";
-        }
-        function makeNew() {
-            window.location.href = window.location.pathname;
-        }
-    </script>
+    <script src="../js/meme_nav.js"></script>
 </body>
 </html>

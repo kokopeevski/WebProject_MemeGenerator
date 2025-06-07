@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Добре дошли</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/welcome.css">
 </head>
 <body>
+    <!-- Навигация -->
+    <nav>
+        <a href="meme_generator.php">Генерирай готино меме/покана</a>
+        <a href="favorites.php">Любими мемета</a>
+        <a href="gallery.php">Галерия</a>
+        <a href="logout.php">Изход</a>
+    </nav>
+
+    <!-- Основно съдържание -->
     <div class="container">
         <h1>Здравейте, <?php echo htmlspecialchars($username); ?>!</h1>
-        <p>Добре дошли в Меме Генератора!</p>
+        <p id="welcome">Добре дошли в Меме Генератора!</p>
+        <p>
+            В този уебсайт имате невероятната възможност да създавате уникални, креативни и изключително забавни покани и мемета, които не само ще ви отличат от останалите, но и ще привлекат максимално внимание към вашето събитие. Нашият инструмент за генериране ви позволява да съчетаете чувство за хумор с визуален стил, като създадете истински шедьоври, които да бъдат споделяни с приятели, колеги и последователи в социалните мрежи. Потопете се в света на креативността и нека въображението ви заработи на пълни обороти!
+        </p>
         <a href="meme_generator.php" class="btn">Направи готино меме</a>
-        <a href="favorites.php" class="btn">Любими мемета</a> <!-- Новият бутон -->
+        <a href="favorites.php" class="btn">Любими мемета</a>
         <a href="gallery.php" class="btn">Галерия</a>
         <a href="logout.php" class="btn">Изход</a>
     </div>

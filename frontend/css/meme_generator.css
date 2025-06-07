@@ -1,4 +1,4 @@
-.container {
+/* .container {
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 8px;
@@ -41,4 +41,178 @@
 
 canvas {
     border: 1px solid #ddd;
+} */
+
+
+/* meme_generator.css */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #e0f7ff;
+    color: #333;
+}
+
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0099cc;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: flex-end;
+    box-shadow: 0 0.5px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.nav-buttons {
+    width: 100%;
+    text-align: center;
+}
+
+.top-nav .nav-buttons a {
+    color: #fff;
+    text-decoration: none;
+    /* margin-left: 20px; */
+    padding-right: 30px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.top-nav .nav-buttons a:hover {
+    color: #e0f7ff;
+}
+
+.container {
+    display: flex;
+    margin-top: 70px;
+    height: calc(100vh - 70px);
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #cceeff;
+    overflow-y: auto;
+    padding: 15px;
+    border-right: 2px solid #b0e0ff;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.templates {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.template-item {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.template-item img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+}
+
+.template-item:hover {
+    border-color: #0099cc;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.main-content h1 {
+    font-size: 2rem;
+    color: #0077aa;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.upload-section,
+.meme-form {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.upload-section label {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+.upload-section input[type="file"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.meme-form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.meme-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5fafd;
+}
+
+canvas {
+    margin-top: 20px;
+    max-width: 100%;
+    border: 2px solid #0077aa;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#downloadButton {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #0077aa;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#downloadButton:hover {
+    background-color: #005f88;
+}
+
+/* Scrollbar стил само за sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #0099cc;
+    border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #e6faff;
 }
