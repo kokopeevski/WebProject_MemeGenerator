@@ -27,20 +27,17 @@ function selectTemplate(img) {
     img.parentElement.classList.add('selected');
 
     fileInput.value = '';
-
     selectedImage = new Image();
     selectedImage.crossOrigin = "Anonymous"; 
     let imgSrc = img.src;
-    console.log('Опит за зареждане на изображение от:', imgSrc);
 
     if (imgSrc.startsWith('http') && !imgSrc.includes('api.allorigins.win')) {
         imgSrc = `https://api.allorigins.win/raw?url=${encodeURIComponent(imgSrc)}`;
-        console.log('Прокси URL:', imgSrc);
     }
+
     selectedImage.src = imgSrc;
 
     selectedImage.addEventListener('load', () => {
-        console.log('Изображението е заредено успешно:', selectedImage.width, 'x', selectedImage.height);
         updatePreview();
         downloadButton.style.display = 'block';
     }, { once: true });
@@ -103,7 +100,6 @@ function updatePreview() {
         ctx.font = '20px Arial';
         ctx.textAlign = 'center';
         ctx.fillText('Избери шаблон или качи снимка', canvas.width / 2, canvas.height / 2);
-        downloadButton.style.display = 'none';
         return;
     }
 

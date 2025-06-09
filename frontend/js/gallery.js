@@ -69,3 +69,4 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Грешка при зареждане на галерията:', error));
 });
+
