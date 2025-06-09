@@ -1,16 +1,28 @@
 <?php
 session_start();
-require '../backend/db.php'; // пътят до твоя db.php файл
+require '../backend/db.php'; 
+
+header('Content-Type: application/json');
 
 if (!isset($_SESSION['user_id']) || !isset($_POST['image'])) {
-    header("Location: gallery.php");
+    echo json_encode(['success' => false, 'error' => 'Missing data']);
     exit;
 }
 
 $pdo = DB::getConnection();
-$stmt = $pdo->prepare("INSERT IGNORE INTO favorites (user_id, image_path) VALUES (?, ?)");
-$stmt->execute([$_SESSION['user_id'], $_POST['image']]);
+$userId = $_SESSION['user_id'];
+$imagePath = $_POST['image'];
 
-header("Location: gallery.php");
+$checkStmt = $pdo->prepare("SELECT * FROM favorites WHERE user_id = ? AND image_path = ?");
+$checkStmt->execute([$userId, $imagePath]);
+
+if ($checkStmt->rowCount() > 0) {
+    $deleteStmt = $pdo->prepare("DELETE FROM favorites WHERE user_id = ? AND image_path = ?");
+    $deleteStmt->execute([$userId, $imagePath]);
+    echo json_encode(['success' => true, 'action' => 'removed']);
+} else {
+    $insertStmt = $pdo->prepare("INSERT INTO favorites (user_id, image_path) VALUES (?, ?)");
+    $insertStmt->execute([$userId, $imagePath]);
+    echo json_encode(['success' => true, 'action' => 'added']);
+}
 exit;
-?>

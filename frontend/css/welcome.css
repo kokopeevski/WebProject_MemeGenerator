@@ -8,12 +8,11 @@
 }
 
 body {
-    background: linear-gradient(to right, #e6f2ff, #ffffff);
+    background: url('https://i.pinimg.com/originals/42/ac/98/42ac987fa076b4d15b97f38572a89e5e.jpg') no-repeat center center/cover;
     min-height: 100vh;
     color: #003366;
 }
 
-/* Навигация */
 nav {
     position: fixed;
     top: 0;
@@ -42,7 +41,6 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* Основно съдържание */
 .container {
     max-width: 900px;
     margin: 120px auto 40px;
@@ -63,12 +61,28 @@ nav a:hover {
     font-size: 1.2rem;
     line-height: 1.8;
     color: #003366;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: justify;
+}
+
+.container ul li {
+   text-align: left;
+    margin-left: 20px;
+    font-size: 18px;
+}
+.list {
+    margin-left: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.parag p {
+    margin-bottom: 0px;
 }
 
 #welcome {
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .btn {

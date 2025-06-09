@@ -1,5 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    updatePreview(); // Initial canvas setup
+    const templateItems = document.querySelectorAll('.template-item img');
+    if (templateItems.length === 0) {
+        console.error('Няма намерени .template-item елементи!');
+    } else {
+        console.log('Намерени', templateItems.length, 'шаблона.');
+    }
+    templateItems.forEach(img => {
+        img.addEventListener('click', () => {
+            console.log('Клик върху шаблон:', img.src);
+            selectTemplate(img);
+        });
+    });
+    updatePreview(); 
 });
 
 const canvas = document.getElementById('memeCanvas');
@@ -10,26 +22,34 @@ const fileInput = document.getElementById('upload');
 const downloadButton = document.getElementById('downloadButton');
 let selectedImage = null;
 
-function selectTemplate(element) {
+function selectTemplate(img) {
     document.querySelectorAll('.template-item').forEach(item => item.classList.remove('selected'));
-    element.classList.add('selected');
+    img.parentElement.classList.add('selected');
+
+    fileInput.value = '';
+
     selectedImage = new Image();
-    selectedImage.src = element.querySelector('img').src;
+    selectedImage.crossOrigin = "Anonymous"; 
+    let imgSrc = img.src;
+    console.log('Опит за зареждане на изображение от:', imgSrc);
+
+    if (imgSrc.startsWith('http') && !imgSrc.includes('api.allorigins.win')) {
+        imgSrc = `https://api.allorigins.win/raw?url=${encodeURIComponent(imgSrc)}`;
+        console.log('Прокси URL:', imgSrc);
+    }
+    selectedImage.src = imgSrc;
+
     selectedImage.addEventListener('load', () => {
+        console.log('Изображението е заредено успешно:', selectedImage.width, 'x', selectedImage.height);
         updatePreview();
         downloadButton.style.display = 'block';
     }, { once: true });
-    selectedImage.addEventListener('error', () => {
-        alert('Грешка при зареждане на шаблона. Моля, проверете дали изображението съществува.');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#ccc';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#000';
-        ctx.font = '20px Arial';
-        ctx.textAlign = 'center';
-        ctx.fillText('Грешка при зареждане на изображението', canvas.width / 2, canvas.height / 2);
-        downloadButton.style.display = 'none';
+
+    selectedImage.addEventListener('error', (e) => {
+        console.error('Грешка при зареждане на изображението:', e);
+        alert('Грешка при зареждане на шаблона. Моля, изберете друг шаблон.');
         selectedImage = null;
+        updatePreview();
     }, { once: true });
 }
 
@@ -63,6 +83,8 @@ function handleUpload() {
             updatePreview();
         };
         reader.readAsDataURL(file);
+    } else {
+        updatePreview();
     }
 }
 

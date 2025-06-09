@@ -8,34 +8,30 @@
 
 body {
     min-height: 100vh;
-    background: url('https://e1.pxfuel.com/desktop-wallpaper/721/613/desktop-wallpaper-abstract-login-page.jpg') no-repeat center center/cover;
-    /* background-color: #ffffff; */
+    background: url('https://cdn.wallpapersafari.com/85/14/ATs7gY.png?fbclid=IwY2xjawKxUr9leHRuA2FlbQIxMABicmlkETFoUGZ6MTh4dkYxUVM2NjlCAR7wGfKVvCtDxTsqVBcLr7L-VdgEExqmwjapjRcC-kL05ZjV3Ffl5yRE8g8uXw_aem_fYUkqtmuaQPNd13Y1iz5kQ') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(3px);
 }
 
-/* Контейнер */
 .container {
-    background: rgba(255, 255, 255, 0.1);
+    background:#ffffff;
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 40px;
     max-width: 400px;
     width: 90%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 32px rgba(37, 32, 32, 0.396);
     text-align: center;
-    color: #000000;
+    color: #060606;
 }
 
-/* Заглавие */
 .container h1 {
     font-size: 2rem;
     margin-bottom: 20px;
+    color: rgba(46, 95, 147, 0.7);
 }
 
-/* Съобщения */
 .success, .error {
     border-radius: 8px;
     padding: 10px;
@@ -51,7 +47,6 @@ body {
     color: #FF5252;
 }
 
-/* Формуляр */
 form {
     display: flex;
     flex-direction: column;
@@ -61,6 +56,7 @@ form {
 label {
     font-weight: 600;
     text-align: left;
+    color: rgba(46, 95, 147, 0.7);
 }
 
 input[type="email"],
@@ -81,7 +77,6 @@ input[type="password"]:focus {
     outline: none;
 }
 
-/* Бутон */
 .btn {
     background: rgba(0, 123, 255, 0.7);
     color: #fff;
@@ -98,7 +93,6 @@ input[type="password"]:focus {
     transform: translateY(-2px);
 }
 
-/* Линк към регистрация */
 .container p {
     margin-top: 15px;
     font-size: 0.9rem;
