@@ -165,3 +165,22 @@ canvas {
 .sidebar::-webkit-scrollbar-track {
     background: #e6faff;
 }
+
+.facebook-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #0077aa;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.facebook-button:hover {
+    background-color: #005f88;
+}

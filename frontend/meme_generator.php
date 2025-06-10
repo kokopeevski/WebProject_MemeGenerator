@@ -55,7 +55,11 @@ $templates = $stmt->fetchAll();
             <label for="bottom_text">Долен текст:</label>
             <input type="text" id="bottom_text" placeholder="Въведи долен текст">
             <canvas id="memeCanvas"></canvas>
-            <button id="downloadButton">Изтегли меме</button>
+            <!-- <button id="downloadButton">Изтегли меме</button> -->
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                <button id="downloadButton">Изтегли меме</button>
+                <a href="https://www.facebook.com/groups/2210393822690424/" target="_blank" class="facebook-button">Качи меме/покана чрез Facebook</a>
+            </div>
         </div>
     </main>
 </div>
