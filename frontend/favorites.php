@@ -35,7 +35,7 @@ $images = $stmt->fetchAll();
 <nav class="top-nav">
     <div class="nav-buttons">
         <a href="welcome.php">Начало</a>
-        <a href="meme_generator.php">Генерирай меме</a>
+        <a href="./mood_selection.php">Генерирай меме</a>
         <a href="favorites.php">Любими мемета</a>
         <a href="gallery.php">Галерия</a>
         <a href="logout.php">Изход</a>
@@ -55,7 +55,6 @@ $images = $stmt->fetchAll();
     <a href="welcome.php" class="btn">Назад</a>
 </div>
 
-<!-- Модален прозорец за увеличаване на снимките -->
 <div class="modal" id="imageModal">
     <span class="close" onclick="closeModal()">×</span>
     <img class="modal-content" id="modalImage">

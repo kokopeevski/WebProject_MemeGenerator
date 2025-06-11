@@ -36,7 +36,9 @@ nav a:hover {
 .container {
     display: flex;
     margin-top: 70px;
-    height: calc(100vh - 70px);
+    /* Уверете се, че контейнерът заема останалата част от височината на изгледа */
+    min-height: calc(100vh - 70px);
+    height: calc(100vh - 70px); /* Изрично задаваме височина, за да може flex елементите да се разтягат */
 }
 
 .sidebar {
@@ -45,6 +47,10 @@ nav a:hover {
     overflow-y: auto;
     padding: 15px;
     border-right: 2px solid #b0e0ff;
+    /* Предотвратява свиването на страничната лента на по-малки екрани */
+    flex-shrink: 0;
+    /* За да се появи скролбар, страничната лента трябва да заема цялата налична височина */
+    height: 100%;
 }
 
 .sidebar h2 {
@@ -67,6 +73,11 @@ nav a:hover {
     transition: border-color 0.3s ease;
 }
 
+/* Добавяне на стил за избран шаблон */
+.template-item.selected {
+    border-color: #0077aa;
+}
+
 .template-item img {
     width: 100%;
     display: block;
@@ -82,6 +93,10 @@ nav a:hover {
     flex-grow: 1;
     padding: 30px;
     overflow-y: auto;
+    /* Центрира съдържанието хоризонтално */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main-content h1 {
@@ -94,6 +109,7 @@ nav a:hover {
 .upload-section,
 .meme-form {
     max-width: 600px;
+    width: 100%; /* Гарантира, че заема пълната ширина до max-width */
     margin: 0 auto;
     margin-bottom: 30px;
     text-align: center;
@@ -120,21 +136,97 @@ nav a:hover {
     text-align: left;
 }
 
-.meme-form input[type="text"] {
-    width: 100%;
+/* Стил за текстовото поле за съдържание */
+.meme-form textarea#text_content {
+    width: calc(100% - 22px); /* Коригира за padding и border */
+    min-height: 80px; /* Минимална височина */
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f5fafd;
+    resize: vertical; /* Позволява само вертикално преоразмеряване */
+    margin-bottom: 15px;
+}
+
+/* Контроли за текст (размер, шрифт, цвят) */
+.text-controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /* Изравняване на елементите по долния край */
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Позволява пренареждане на по-малки екрани */
+}
+
+.text-controls > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text-controls label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-align: left;
+    white-space: nowrap; /* Предотвратява пренасянето на етикети на нов ред */
+}
+
+.text-controls input[type="number"],
+.text-controls select,
+.text-controls input[type="color"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5fafd;
+    font-size: 0.9rem;
+    width: 80px; /* Фиксирана ширина за по-добър вид */
+}
+
+.text-controls input[type="color"] {
+    padding: 4px; /* По-малко padding за цветен input */
+    width: 60px; /* По-малка ширина за цветен input */
+    height: 36px; /* За да се изравни с другите полета */
+}
+
+
+/* Бутони за действие с текст (добави, изтрий) */
+.text-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.text-action-buttons button {
+    padding: 10px 20px;
+    background-color: #0077aa;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.text-action-buttons button:hover {
+    background-color: #005f88;
 }
 
 canvas {
     margin-top: 20px;
     max-width: 100%;
+    height: auto;
     border: 2px solid #0077aa;
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: block;
+    cursor: grab; /* Курсор при готовност за плъзгане */
+}
+
+canvas.dragging {
+    cursor: grabbing; /* Курсор при плъзгане */
 }
 
 #downloadButton {
@@ -182,5 +274,99 @@ canvas {
 }
 
 .facebook-button:hover {
+    background-color: #005f88;
+}
+
+/* Стилове за страницата за избор на настроение */
+.mood-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px);
+    text-align: center;
+    padding: 20px;
+}
+.mood-container h1 {
+    font-size: 2.5rem;
+    color: #0077aa;
+    margin-bottom: 40px;
+}
+.mood-buttons {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.mood-button {
+    padding: 15px 30px;
+    background-color: #0077aa;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 180px;
+}
+.mood-button:hover {
+    background-color: #005f88;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.mood-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Стил за модален прозорец */
+.message-box-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.custom-message-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    text-align: center;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.custom-message-box h3 {
+    margin-top: 0;
+    color: #0077aa;
+    font-size: 1.5rem;
+}
+
+.custom-message-box p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.custom-message-box button {
+    padding: 10px 20px;
+    background-color: #0077aa;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.custom-message-box button:hover {
     background-color: #005f88;
 }

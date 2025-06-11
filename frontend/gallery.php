@@ -11,7 +11,7 @@
 <nav class="top-nav">
         <div class="nav-buttons">
             <a href="welcome.php">Начало</a>
-            <a href="meme_generator.php">Генерирай меме</a>
+            <a href="./mood_selection.php">Генерирай меме</a>
             <a href="favorites.php">Любими мемета</a>
             <a href="gallery.php">Галерия</a>
             <a href="logout.php">Изход</a>

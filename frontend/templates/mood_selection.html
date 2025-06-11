@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Избери настроение</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Начало</a>
+        <a href="mood_selection.html">Генерирай меме</a>
+        <a href="#">Любими мемета</a>
+        <a href="#">Галерия</a>
+        <a href="#">Изход</a>
+    </nav>
+    <div class="mood-container">
+        <h1>В какво настроение си днес?</h1>
+        <div class="mood-buttons">
+            <button class="mood-button" data-mood="good">Добро настроение</button>
+            <button class="mood-button" data-mood="neutral">Неутрално</button>
+            <button class="mood-button" data-mood="bad">Лошо настроение</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const moodButtons = document.querySelectorAll('.mood-button');
+
+            moodButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const mood = button.dataset.mood; 
+                    sessionStorage.setItem('selectedMood', mood);
+                    window.location.href = 'index.html';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
